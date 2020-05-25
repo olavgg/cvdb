@@ -17,8 +17,9 @@ const renderTable = data => {
 	document.querySelector('table tbody').innerHTML = tableBodyHtml;
 };
 
-const listOfPeopleUrl = "/list";
-fetch(listOfPeopleUrl)
+fetch("/list", {
+		credentials: 'include'
+	})
 	.then( response => {
 		return response.json();
 	})

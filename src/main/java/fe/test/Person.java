@@ -16,7 +16,7 @@ public class Person {
 
     public Integer age;
 
-    public List<String> buzzWords = new ArrayList<>();
+    public List<String> departments = new ArrayList<>();
 
     public Person(long id) {
         this.id = id;

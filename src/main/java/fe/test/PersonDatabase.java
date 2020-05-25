@@ -28,7 +28,7 @@ public class PersonDatabase {
             dbPerson.name = person.name;
             dbPerson.age = person.age;
             dbPerson.title = person.title;
-            dbPerson.buzzWords = person.buzzWords;
+            dbPerson.departments = person.departments;
         }
     }
 
@@ -46,25 +46,25 @@ public class PersonDatabase {
     @PostConstruct
     public void init() {
 
-        Person janni = new Person("Janni Somme", "Backend developer", 23);
-        janni.buzzWords = List.of("Spring", "Java", "Linux");
+        Person janni = new Person("Janni Somme", "Tech. Support", 23);
+        janni.departments = List.of("Support");
         addPerson(janni);
 
         Person tom = new Person("Tom Bone", "Java developer", 44);
-        tom.buzzWords = List.of("J2EE", "Java", "Swing", "Maven", "Websphere");
+        tom.departments = List.of("Engineering");
         addPerson(tom);
 
-        Person james = new Person("James Eastwood", "Full stack developer", 39);
-        james.buzzWords = List.of(
-                "HTML", "CSS", "C#", "Windows", ".Net Core",
-                "MS SQL Server", "Visual Basic", "React");
+        Person james = new Person("James Eastwood", "Planning Manager", 39);
+        james.departments = List.of("Engineering", "Management", "Support");
         addPerson(james);
 
-        Person vincent = new Person("Vincent Cassels", "Rock Star", 31);
-        vincent.buzzWords = List.of(
-                "Preact", "Functional Programming", "AWS", "Puppy Linux",
-                "MongoDB", "Machine Learning", "Rust");
+        Person vincent = new Person("Vincent Cassels", "Lead Engineer", 51);
+        vincent.departments = List.of("Engineering", "Management");
         addPerson(vincent);
+
+        Person bruce = new Person("Bruce Wayne", "Account Supervisor", 27);
+        bruce.departments = List.of("Finance");
+        addPerson(bruce);
     }
 
 }
