@@ -7,8 +7,8 @@ const renderTable = data => {
 			<td>${person.id}</td>
 			<td>${person.name}</td>
 			<td>${person.title}</td>
-			<td>${person.buzzWords.map(buzzWord => `
-				${buzzWord}
+			<td>${person.departments.map(department => `
+				${department}
 			`).join(', ')}
 			</td>
 		</tr>

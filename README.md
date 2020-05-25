@@ -16,7 +16,7 @@ curl \
     -H "Accept:application/json" \
     -H "Content-Type: application/json" \
     -XPOST http://localhost:8080/update \
-    -d '{"id":1,"name":"Olav","title":"SQL developer","age":40,"buzzWords":["Oracle","MS SQL","SQLite","PostgreSQL"]}'
+    -d '{"id":1,"name":"Olav","title":"SQL developer","age":40,"departments":["Engineering"]}'
 ```
 
 Delete person
