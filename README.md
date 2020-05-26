@@ -21,5 +21,8 @@ curl \
 
 Delete person
 ```
-curl -XPOST http://localhost:8080/delete -d 'id=1'
+curl \
+    -H "Content-Type: application/json" \
+    -XPOST http://localhost:8080/delete \
+    -d '{"id": 1}'
 ```
