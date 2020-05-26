@@ -54,7 +54,7 @@ public class BaseController {
             },
             produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML}
     )
-    public Person add(Person person){
+    public Person add(@Body Person person){
         personDatabase.addPerson(person);
         return person;
     }
@@ -69,7 +69,7 @@ public class BaseController {
             },
             produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML}
     )
-    public Person update(Person person){
+    public Person update(@Body Person person){
         personDatabase.updatePerson(person);
         return person;
     }
@@ -77,27 +77,16 @@ public class BaseController {
     @Post(
             uri = "/delete",
             consumes = {
+                    MediaType.MULTIPART_FORM_DATA,
                     MediaType.APPLICATION_JSON,
                     MediaType.APPLICATION_XML,
                     MediaType.APPLICATION_FORM_URLENCODED
             },
             produces = {MediaType.TEXT_PLAIN}
     )
-    public HttpResponse<String> delete(Person person){
+    public HttpResponse<String> delete(@Body Person person){
         personDatabase.deletePerson(person);
         return HttpResponse.noContent();
-    }
-
-    @Post(
-            uri = "/delete",
-            consumes = {
-                    MediaType.MULTIPART_FORM_DATA
-            },
-            produces = {MediaType.TEXT_PLAIN}
-    )
-    public HttpResponse<String> delete(@Body Map<String, String> data){
-        Person p = new Person(Long.parseLong(data.get("id")));
-        return delete(p);
     }
 
 }
