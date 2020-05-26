@@ -2,12 +2,15 @@ package fe.test;
 
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
+import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
+import io.micronaut.http.client.multipart.MultipartBody;
 
 import javax.inject.Inject;
 import java.util.Collection;
+import java.util.Map;
 
 @Controller
 public class BaseController {
@@ -74,7 +77,6 @@ public class BaseController {
     @Post(
             uri = "/delete",
             consumes = {
-                    MediaType.MULTIPART_FORM_DATA,
                     MediaType.APPLICATION_JSON,
                     MediaType.APPLICATION_XML,
                     MediaType.APPLICATION_FORM_URLENCODED
@@ -84,6 +86,18 @@ public class BaseController {
     public HttpResponse<String> delete(Person person){
         personDatabase.deletePerson(person);
         return HttpResponse.noContent();
+    }
+
+    @Post(
+            uri = "/delete",
+            consumes = {
+                    MediaType.MULTIPART_FORM_DATA
+            },
+            produces = {MediaType.TEXT_PLAIN}
+    )
+    public HttpResponse<String> delete(@Body Map<String, String> data){
+        Person p = new Person(Long.parseLong(data.get("id")));
+        return delete(p);
     }
 
 }
